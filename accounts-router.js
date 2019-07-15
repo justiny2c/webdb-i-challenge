@@ -49,10 +49,25 @@ router.delete('/:id', (req, res) => {
     .del()
     .then(count => {
         res.status(200).json({ message: `${count} record(s) deleted`})
-        // res.status(204).end()
     })
     .catch(error => {
         res.status(500).json(error)    
+    })
+});
+
+router.put('/:id', (req, res) => {
+    db("accounts")
+    .where({ id: req.params.id })
+    .update(req.body)
+    .then(count => {
+        if (count>0){
+        res.status(200).json({ message: `${count} record(s) updated`})
+        } else {
+            res.status(404).json({ message: "ID does not exist"})
+        }
+    })
+    .catch(error => {
+        res.status(500).json(error)
     })
 });
 
