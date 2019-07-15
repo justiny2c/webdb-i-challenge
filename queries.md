@@ -1,8 +1,12 @@
 # Database Queries
 
 ## Find all customers with postal code 1010
+select * from [Customers]
+where PostalCode = 1010
 
 ## Find the phone number for the supplier with the id 11
+select * from [Suppliers]
+where supplierID = 11
 
 ## List first 10 orders ever places, descending by the order date
 
